@@ -1,0 +1,22 @@
+# Jekyll settings
+#
+title: Projet Ornithorynque
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Le <b>bac-à-sable</b> est un site de tests, d'expérimentation. Sans prétention, juste pour me faire plaisir, ne pas perdre la main.
+  On y trouvera quelques bricoles comme : <i>Jekyll</i>, <i>Twine</i>, les photos <i>augmentées</i>...
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.bac-a-sable.eu" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+nav_direction: vertical # vertical, horizontal 
+collections:
+    - sections
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+

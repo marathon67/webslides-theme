@@ -1,0 +1,10 @@
+{% include head.html %}
+{% include header.html %}
+
+{% assign items = site.sections | sort: 'index' %}
+{% for item in items %}
+  {{ item.content }}</p>
+{% endfor %}      
+       
+{% include foot.html %}
+
