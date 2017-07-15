@@ -10,6 +10,8 @@ url: "http://www.bac-a-sable.eu" # the base hostname & protocol for your site, e
 twitter_username: jekyllrb
 github_username:  jekyll
 nav_direction: vertical # vertical, horizontal 
+image_dir: "assets/images"
+sound_source: ""
 collections:
     - sections
 # Build settings

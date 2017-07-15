@@ -1,5 +1,56 @@
 {% include head.html %}
 {% include header.html %}
-{% include section.html %}       
+{% assign items = site.sections | sort: 'index' %}
+{% for item in items %}
+    {% assign type = item.type_of_section %}
+    {% case type %}
+        {% when 'card' %}
+        <section class="fullscreen">  <!-- slide 03 -->
+            <div class="card-50">
+                {% if item.image_side != 'left' %}
+                    <div class="flex-content">
+                        <h2>{{ item.title}} ( {{type}} )</h2>
+                        <p>{{ item.sub-title}}</p>
+                        {{item.content}}
+                    </div>
+                    <!-- end .flex-content-->
+                {% endif %}
+                    <figure>
+                        <img src="{{ item.image.file}}" alt="{{ item.image.description }}">
+                        <figcaption>
+                            <a href="{{ item.image.author_link }}" target="_blank" title="Site de {{item.image.author}}">
+                            <svg class="fa-camera">
+                                <use xlink:href="#fa-camera"></use>
+                            </svg>
+                            {{ item.image.author }}
+                            </a>
+                        </figcaption>
+                    </figure>
+                    <!-- end figure-->
+                {% if item.image_side == 'left' %}
+                    <div class="flex-content">
+                        <h2>{{ item.title}} ( {{type}} )</h2>
+                        <p>{{ item.sub-title}}</p>
+                        {{item.content}}
+                    </div>
+                    <!-- end .flex-content-->
+                {% endif %}
+            </div>
+            <!-- end .card-50-->
+        </section>
+        {% when 'fullimage' %}
+            <section>
+                <span class="background" style="background-image:url('{{ item.image.file }}')"></span>
+                <div class="wrap">
+                    <div class="content-left bg-trans-dark fadeInUp">
+                        <h2><strong>{{ item.title }} <small>( {{type}} )</small></strong></h2>
+                        <p>{{ item.sub-title }}</p>
+                    </div>
+                </div>
+            </section>
+        {% else %}
+            {{ item.content }}
+    {% endcase %}    
+{% endfor %}     
 {% include foot.html %}
 
