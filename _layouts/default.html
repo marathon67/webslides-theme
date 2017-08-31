@@ -1,56 +1,40 @@
 {% include head.html %}
 {% include header.html %}
-{% assign items = site.sections | sort: 'index' %}
+{% include section_titre.html %}
+{% include section_intro.html %}
+{% assign items = site.sections %}
 {% for item in items %}
-    {% assign type = item.type_of_section %}
-    {% case type %}
-        {% when 'card' %}
-        <section class="fullscreen">  <!-- slide 03 -->
-            <div class="card-50">
-                {% if item.image_side != 'left' %}
-                    <div class="flex-content">
-                        <h2>{{ item.title}} ( {{type}} )</h2>
-                        <p>{{ item.sub-title}}</p>
-                        {{item.content}}
-                    </div>
-                    <!-- end .flex-content-->
-                {% endif %}
-                    <figure>
-                        <img src="{{ item.image.file}}" alt="{{ item.image.description }}">
-                        <figcaption>
-                            <a href="{{ item.image.author_link }}" target="_blank" title="Site de {{item.image.author}}">
-                            <svg class="fa-camera">
-                                <use xlink:href="#fa-camera"></use>
-                            </svg>
-                            {{ item.image.author }}
-                            </a>
-                        </figcaption>
-                    </figure>
-                    <!-- end figure-->
-                {% if item.image_side == 'left' %}
-                    <div class="flex-content">
-                        <h2>{{ item.title}} ( {{type}} )</h2>
-                        <p>{{ item.sub-title}}</p>
-                        {{item.content}}
-                    </div>
-                    <!-- end .flex-content-->
-                {% endif %}
-            </div>
-            <!-- end .card-50-->
-        </section>
-        {% when 'fullimage' %}
-            <section>
+    {% assign text_position = item.text_position %}
+    {% case text_position %}
+    {% when 1 or 2 or 3 %}
+    {% assign vert_position = "slide-top" %}
+    {% when 4 or 5 or 6 %}
+    {% assign vert_position = "slide" %}
+    {% when 7 or 8 or 9 %}
+    {% assign vert_position = "slide-bottom" %}
+    {% when 1 or 4 or 7 %}
+    {% assign hor_position = "content-left" %}
+    {% when 2 or 5 or 8 %}
+    {% assign hor_position = "content-center" %}
+    {% when 3 or 6 or 9 %}
+    {% assign hor_position = "content-right" %}
+    
+    {% endcase %}
+   
+            <section class=" {{ vert_position }} ">
                 <span class="background" style="background-image:url('{{ item.image.file }}')"></span>
                 <div class="wrap">
-                    <div class="content-left bg-trans-dark fadeInUp">
+                    <div class=" {{ hor_position }} bg-trans-{{ item.text_background }} fadeInUp">
                         <h2><strong>{{ item.title }} <small>( {{type}} )</small></strong></h2>
                         <p>{{ item.sub-title }}</p>
                     </div>
                 </div>
             </section>
-        {% else %}
-            {{ item.content }}
-    {% endcase %}    
-{% endfor %}     
+   
+{% endfor %}  
+{% include section_interview.html %} 
+{% include section_savoir-plus.html %}   
+{% include section_making-off.html %}   
+{% include section_credits.html %}
 {% include foot.html %}
 

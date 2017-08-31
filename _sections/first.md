@@ -1,15 +1,11 @@
 ---
-index: 1
+text_position: 1
+text_background: dark
+title: "Projet Ornithorynque"
+sub-title: "Découvrez ici les travaux des élèves de CP de la classe de Madame Marckert ... après les congés d'été."
+image:
+  file: "assets/images/ayers_rock.jpg"
+  description: "Áqaba, Jordan"
+  author: "Daniel Burka (Unsplash)"
+  author_link: "https://unsplash.com/@dburka"
 ---
-
-<section class="slide-top">   <!-- slide 01 -->
-    <span class="background" style="background-image:url('assets/images/lunettes.jpg')"></span>
-    <!--.wrap = container (width: 90%) -->
-    <div class="wrap aligncenter ">
-        <h1><strong>Du nouveau pour mon Storytelling ?</strong></h1>
-        <p class="text-intro animate wobble"><b>WebSlides</b> semble permettre de<br>
-        faire des choses assez élaborées sans trop de difficultés.
-        </p>        
-    </div>
-   <!-- .end .wrap -->
-</section>
