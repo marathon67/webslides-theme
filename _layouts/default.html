@@ -3,33 +3,32 @@
 {% include section_titre.html %}
 {% include section_intro.html %}
 {% assign items = site.sections %}
-{% for item in items %}
-    {% assign text_position = item.text_position %}
+{% for slide in site.data.slides %}
+    {% assign text_position = slide.text_position %}
     {% case text_position %}
-    {% when 1 or 2 or 3 %}
-    {% assign vert_position = "slide-top" %}
-    {% when 4 or 5 or 6 %}
-    {% assign vert_position = "slide" %}
-    {% when 7 or 8 or 9 %}
-    {% assign vert_position = "slide-bottom" %}
-    {% when 1 or 4 or 7 %}
-    {% assign hor_position = "content-left" %}
-    {% when 2 or 5 or 8 %}
-    {% assign hor_position = "content-center" %}
-    {% when 3 or 6 or 9 %}
-    {% assign hor_position = "content-right" %}
-    
+        {% when 1 or 2 or 3 %}
+            {% assign vert_position = "slide-top" %}
+        {% when 4 or 5 or 6 %}
+            {% assign vert_position = "slide" %}
+        {% when 7 or 8 or 9 %}
+            {% assign vert_position = "slide-bottom" %}
+        {% when 1 or 4 or 7 %}
+            {% assign hor_position = "content-left" %}
+        {% when 2 or 5 or 8 %}
+            {% assign hor_position = "content-center" %}
+        {% when 3 or 6 or 9 %}
+            {% assign hor_position = "content-right" %}
     {% endcase %}
    
-            <section class=" {{ vert_position }} ">
-                <span class="background" style="background-image:url('{{ item.image.file }}')"></span>
-                <div class="wrap">
-                    <div class=" {{ hor_position }} bg-trans-{{ item.text_background }} fadeInUp">
-                        <h2><strong>{{ item.title }} <small>( {{type}} )</small></strong></h2>
-                        <p>{{ item.sub-title }}</p>
-                    </div>
-                </div>
-            </section>
+<section class=" {{ vert_position }} ">
+    <span class="background" style="background-image:url('{{ slide.image_file }}')"></span>
+    <div class="wrap">
+        <div class=" {{ hor_position }} bg-trans-{{ slide.text_background }} fadeInUp">
+            <h2><strong>{{ slide.title }} </strong></h2>
+            <p>{{ slide.sub-title }}</p>
+        </div>
+    </div>
+</section>
    
 {% endfor %}  
 {% include section_interview.html %} 
